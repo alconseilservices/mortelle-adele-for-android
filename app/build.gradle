@@ -13,11 +13,15 @@ android {
         versionCode 1
         versionName "1.0"
         def contentProviderAuthority = applicationId + ".stickerspackscontentprovider"
+        def fileProviderAuthority = applicationId + ".fileprovider"
         manifestPlaceholders =
                 [contentProviderAuthority: contentProviderAuthority]
         buildConfigField("String",
                 "CONTENT_PROVIDER_AUTHORITY",
                 "\"${contentProviderAuthority}\"")
+        buildConfigField("String",
+                "FILE_PROVIDER_AUTHORITY",
+                "\"${fileProviderAuthority}\"")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -38,4 +42,5 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
