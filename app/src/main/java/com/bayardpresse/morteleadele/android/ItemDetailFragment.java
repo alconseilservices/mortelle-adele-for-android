@@ -1,6 +1,7 @@
 package com.bayardpresse.morteleadele.android;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.bayardpresse.morteleadele.android.model.PackStore;
@@ -52,7 +53,9 @@ public class ItemDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             Toolbar appBarLayout = activity.findViewById(R.id.detail_toolbar);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.name);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    appBarLayout.setTitle(mItem.name);
+                }
             }
         }
     }

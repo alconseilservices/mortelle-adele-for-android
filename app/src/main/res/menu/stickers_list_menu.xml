@@ -12,10 +12,16 @@
         app:showAsAction="ifRoom">
         <menu>
             <item
-                android:id="@+id/menu_item_addwas_action"
-                android:icon="@drawable/ic_share_black_24dp"
+                android:id="@+id/menu_item_cgu_action"
+                android:icon="@drawable/ic_info_black_24dp"
                 android:orderInCategory="300"
-                android:title="@string/sticker_detail_menu_item_addwas"
+                android:title="@string/sticker_detail_menu_item_CGU"
+                app:showAsAction="ifRoom"></item>
+            <item
+                android:id="@+id/menu_item_mortelleadele_action"
+                android:icon="@drawable/ic_web_black_24dp"
+                android:orderInCategory="300"
+                android:title="@string/sticker_detail_menu_item_site_mortelle_adele"
                 app:showAsAction="ifRoom"></item>
         </menu>
     </item>

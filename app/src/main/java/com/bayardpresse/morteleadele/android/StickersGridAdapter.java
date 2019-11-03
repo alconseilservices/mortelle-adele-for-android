@@ -65,8 +65,9 @@ public class StickersGridAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     try {
                         ImageView iv = (ImageView) v;
-                        Bitmap stickerBmp = BitmapFactory.decodeResource(v.getContext().getResources(), (Integer) v.getTag());
-                        ContextWrapper wrapper = new ContextWrapper(v.getContext());
+                        Context ctx = v.getContext();
+                        Bitmap stickerBmp = BitmapFactory.decodeResource(ctx.getResources(), (Integer) v.getTag());
+                        ContextWrapper wrapper = new ContextWrapper(ctx);
                         File file = wrapper.getDir("images", Context.MODE_PRIVATE);
                         file = new File(file, "image.webp");
                         OutputStream stream = new FileOutputStream(file);
@@ -77,13 +78,13 @@ public class StickersGridAdapter extends BaseAdapter {
                         FileInputStream fis = new FileInputStream(fileUri.getPath());
                         Bitmap bitmap = BitmapFactory.decodeStream(fis);
                         fis.close();
-                        file = new File(v.getContext().getCacheDir() + "/thestickers.webp");
-                        bitmap.compress(Bitmap.CompressFormat.WEBP, 100, new FileOutputStream(file));
+                        file = new File(ctx.getCacheDir() + "/thestickers.webp");
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file));
                         Uri contentUri = FileProvider.getUriForFile(v.getContext(), BuildConfig.FILE_PROVIDER_AUTHORITY, file);
                         Intent shareIntent = new Intent(Intent.ACTION_SEND);
                         shareIntent.setType("image/*");
                         shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-                        v.getContext().startActivity(Intent.createChooser(shareIntent, "Partager le sticker"));
+                        ctx.startActivity(Intent.createChooser(shareIntent, "Partager le sticker"));
                     } catch (java.io.IOException e) {
                         e.printStackTrace();
                     }
