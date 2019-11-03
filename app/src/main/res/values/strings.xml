@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Mortele Adele</string>
     <string name="title_item_detail">Item Detail</string>
+    <string name="sticker_detail_menu_item_share">Menu</string>
+    <string name="sticker_detail_menu_item_addwas">Ajouter à Whatsapp</string>
+    <string name="whatspp_not_installed">Whatsapp non trouvé</string>
 </resources>

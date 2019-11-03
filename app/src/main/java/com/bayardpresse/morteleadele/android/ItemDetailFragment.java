@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.Toolbar;
 
 import com.bayardpresse.morteleadele.android.model.Pack;
 
@@ -49,7 +50,7 @@ public class ItemDetailFragment extends Fragment {
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             mItem = PackStore.getPackById(getArguments().getString(ARG_ITEM_ID));
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
+            Toolbar appBarLayout = activity.findViewById(R.id.detail_toolbar);
             if (appBarLayout != null) {
                 appBarLayout.setTitle(mItem.name);
             }

@@ -1,0 +1,302 @@
+{
+  "android_play_store_link": "",
+  "ios_app_store_link": "",
+  "sticker_packs": [
+    {
+      "identifier": "1",
+      "name": "Punchlines",
+      "publisher": "Bayard Presse",
+      "tray_image_file": "trayIcon.png",
+      "image_data_version":"1",
+      "avoid_cache":false,
+      "publisher_email":"",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "objet_001_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_002_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_text_001_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_text_002_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_text_003_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_text_004_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_text_005_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_text_006_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_text_007_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_text_008_512px.webp",
+          "emojis": ["😄","😀"]
+        }
+      ]
+    },
+    {
+      "identifier": "2",
+      "name": "Personnages 1",
+      "publisher": "Bayard Presse",
+      "tray_image_file": "icon96.png",
+      "image_data_version":"1",
+      "avoid_cache":false,
+      "publisher_email":"",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "ad001_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad002_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad003_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad004_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad005_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad006_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad007_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad008_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad009_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad010_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad011_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad012_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad013_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad014_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad015_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad016_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad017_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad018_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad019_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad020_512px.webp",
+          "emojis": ["😄","😀"]
+        }
+      ]
+    },
+    {
+      "identifier": "4",
+      "name": "Personnages 2",
+      "publisher": "Bayard Presse",
+      "tray_image_file": "icon96.png",
+      "image_data_version":"1",
+      "avoid_cache":false,
+      "publisher_email":"",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "Ajax_001_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Ajax_002_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Ajax_003_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Jade_001_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Jade_002_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Magnus_001_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Magnus_002_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Magnus_003_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Magnus_004_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Magnus_005_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Magnus_006_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Magnus_007_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Magnus_008_512px.webp",
+          "emojis": ["😄","😀"]
+        }
+      ]
+    },
+    {
+      "identifier": "3",
+      "name": "Stickers mortels - Couvertures",
+      "publisher": "Bayard Presse",
+      "tray_image_file": "trayIcon.png",
+      "image_data_version":"1",
+      "avoid_cache":false,
+      "publisher_email":"",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "T1_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T2_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T3_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T4_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T5_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T6_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T7_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T8_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T9_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T10_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T11_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T12_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T13_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T14_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T15_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T16_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "T17_512px.webp",
+          "emojis": ["😄","😀"]
+        }
+      ]
+    }
+  ]
+}

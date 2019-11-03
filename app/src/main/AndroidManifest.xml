@@ -27,6 +27,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bayardpresse.morteleadele.android.ItemListActivity" />
         </activity>
+        <provider
+            android:name=".StickersPacksContentProvider"
+            android:authorities="${contentProviderAuthority}"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.whatsapp.sticker.READ" ></provider>
     </application>
 
 </manifest>

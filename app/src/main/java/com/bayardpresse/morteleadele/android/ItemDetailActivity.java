@@ -1,31 +1,29 @@
 package com.bayardpresse.morteleadele.android;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.bayardpresse.morteleadele.android.model.Pack;
 import com.bayardpresse.morteleadele.android.model.PackStore;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
-import androidx.core.app.NavUtils;
 
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
+import android.widget.Toast;
 
-/**
- * An activity representing a single Item detail screen. This
- * activity is only used on narrow width devices. On tablet-size devices,
- * item details are presented side-by-side with a list of items
- * in a {@link ItemListActivity}.
- */
 public class ItemDetailActivity extends AppCompatActivity {
+
+    private static final int ADD_PACK = 200;
+    static final String CONSUMER_WHATSAPP_PACKAGE_NAME = "com.whatsapp";
+    public static final String EXTRA_STICKER_PACK_ID = "sticker_pack_id";
+    public static final String EXTRA_STICKER_PACK_AUTHORITY = "sticker_pack_authority";
+    public static final String EXTRA_STICKER_PACK_NAME = "sticker_pack_name";
 
     private Pack pack;
 
@@ -34,65 +32,48 @@ public class ItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         pack = PackStore.getPackById(getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
         setContentView(R.layout.activity_item_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
 
-        toolbar.setSubtitle("yo yo !!!!");
         setTitle(pack.name);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        Toolbar toolbar = findViewById(R.id.detail_toolbar);
+        setSupportActionBar(toolbar);
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-        // savedInstanceState is non-null when there is fragment state
-        // saved from previous configurations of this activity
-        // (e.g. when rotating the screen from portrait to landscape).
-        // In this case, the fragment will automatically be re-added
-        // to its container so we don't need to manually add it.
-        // For more information, see the Fragments API guide at:
-        //
-        // http://developer.android.com/guide/components/fragments.html
-        //
-//        if (savedInstanceState == null) {
-//            // Create the detail fragment and add it to the activity
-//            // using a fragment transaction.
-//            Bundle arguments = new Bundle();
-//            arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
-//                    getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
-//            ItemDetailFragment fragment = new ItemDetailFragment();
-//            fragment.setArguments(arguments);
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.item_detail_container, fragment)
-//                    .commit();
-//        }
-
         GridView stickersGrid = findViewById(R.id.stickers_grid);
         stickersGrid.setAdapter(new StickersGridAdapter(getBaseContext(), pack));
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.stickers_detail_menu, menu);
+        return true;
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == android.R.id.home) {
-            // This ID represents the Home or Up button. In the case of this
-            // activity, the Up button is shown. Use NavUtils to allow users
-            // to navigate up one level in the application structure. For
-            // more details, see the Navigation pattern on Android Design:
-            //
-            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-            //
-            NavUtils.navigateUpTo(this, new Intent(this, ItemListActivity.class));
+        if (id == R.id.menu_item_addwas_action) {
+            if (!WhitelistCheck.isWhatsAppConsumerAppInstalled(getPackageManager())) {
+                Toast.makeText(this, R.string.whatspp_not_installed, Toast.LENGTH_LONG).show();
+                return false;
+            }
+            Intent intent = new Intent();
+            intent.setAction("com.whatsapp.intent.action.ENABLE_STICKER_PACK");
+            intent.putExtra(EXTRA_STICKER_PACK_ID, pack.id);
+            intent.putExtra(EXTRA_STICKER_PACK_AUTHORITY, BuildConfig.CONTENT_PROVIDER_AUTHORITY);
+            intent.putExtra(EXTRA_STICKER_PACK_NAME, pack.name);
+            intent.setPackage(CONSUMER_WHATSAPP_PACKAGE_NAME);
+            try {
+                startActivityForResult(intent, ADD_PACK);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(this, "Oups !!!", Toast.LENGTH_LONG).show();
+            }
             return true;
         }
         return super.onOptionsItemSelected(item);

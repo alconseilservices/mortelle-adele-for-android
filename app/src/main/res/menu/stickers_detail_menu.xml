@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ItemDetailActivity">
+    <item
+        android:id="@+id/menu_item_more_action"
+        android:icon="@android:drawable/ic_menu_share"
+        android:orderInCategory="300"
+        android:title="@string/sticker_detail_menu_item_share"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item  android:id="@+id/menu_item_addwas_action"
+                android:icon="@android:drawable/ic_menu_add"
+                android:orderInCategory="300"
+                android:title="@string/sticker_detail_menu_item_addwas"
+                app:showAsAction="ifRoom"></item>
+        </menu>
+    </item>
+</menu>

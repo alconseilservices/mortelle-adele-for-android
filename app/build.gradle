@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
+    aaptOptions {
+        noCompress "webp"
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
@@ -9,6 +12,12 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        def contentProviderAuthority = applicationId + ".stickerspackscontentprovider"
+        manifestPlaceholders =
+                [contentProviderAuthority: contentProviderAuthority]
+        buildConfigField("String",
+                "CONTENT_PROVIDER_AUTHORITY",
+                "\"${contentProviderAuthority}\"")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
