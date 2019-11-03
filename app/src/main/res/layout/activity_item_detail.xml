@@ -9,15 +9,16 @@
     tools:ignore="MergeRootFrame">
 
     <GridView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/stickers_grid"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_weight="1"
         android:numColumns="4"
         android:gravity="center"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
     </GridView>
+
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -50,10 +51,11 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:tint="@android:color/white"
         android:layout_gravity="center_vertical|start"
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@+id/stickers_grid"
         app:layout_anchorGravity="top|end"
-        app:srcCompat="@android:drawable/stat_notify_chat" />
+        app:srcCompat="@android:drawable/ic_menu_share" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

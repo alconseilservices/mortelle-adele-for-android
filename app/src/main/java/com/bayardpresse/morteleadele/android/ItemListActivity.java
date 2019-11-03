@@ -89,7 +89,7 @@ public class ItemListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Pack item = (Pack) view.getTag();
-                if (mTwoPane) {
+                /*if (mTwoPane) {
                     Bundle arguments = new Bundle();
                     arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.id);
                     ItemDetailFragment fragment = new ItemDetailFragment();
@@ -97,13 +97,13 @@ public class ItemListActivity extends AppCompatActivity {
                     mParentActivity.getSupportFragmentManager().beginTransaction()
                             .replace(R.id.item_detail_container, fragment)
                             .commit();
-                } else {
+                } else {*/
                     Context context = view.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
                     intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, item.id);
 
                     context.startActivity(intent);
-                }
+                //}
             }
         };
 

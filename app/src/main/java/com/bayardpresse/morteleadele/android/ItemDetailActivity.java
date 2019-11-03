@@ -3,6 +3,7 @@ package com.bayardpresse.morteleadele.android;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.bayardpresse.morteleadele.android.model.Pack;
 import com.bayardpresse.morteleadele.android.model.PackStore;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -26,12 +27,18 @@ import android.widget.GridView;
  */
 public class ItemDetailActivity extends AppCompatActivity {
 
+    private Pack pack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        pack = PackStore.getPackById(getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
         setContentView(R.layout.activity_item_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
+
+        toolbar.setSubtitle("yo yo !!!!");
+        setTitle(pack.name);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -71,10 +78,7 @@ public class ItemDetailActivity extends AppCompatActivity {
 //        }
 
         GridView stickersGrid = findViewById(R.id.stickers_grid);
-        stickersGrid.setAdapter(
-                new StickersGridAdapter(getBaseContext(),
-                        PackStore.getPackById(getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID)))
-        );
+        stickersGrid.setAdapter(new StickersGridAdapter(getBaseContext(), pack));
     }
 
     @Override
