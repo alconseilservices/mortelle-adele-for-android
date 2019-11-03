@@ -8,11 +8,16 @@
     tools:context=".ItemDetailActivity"
     tools:ignore="MergeRootFrame">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/item_detail_container"
-        android:layout_width="match_parent"
+    <GridView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/stickers_grid"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_width="match_parent"
+        android:numColumns="4"
+        android:gravity="center"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </GridView>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -47,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"
         android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@+id/item_detail_container"
+        app:layout_anchor="@+id/stickers_grid"
         app:layout_anchorGravity="top|end"
         app:srcCompat="@android:drawable/stat_notify_chat" />
 

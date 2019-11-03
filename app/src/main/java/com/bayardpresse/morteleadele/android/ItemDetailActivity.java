@@ -3,6 +3,7 @@ package com.bayardpresse.morteleadele.android;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.bayardpresse.morteleadele.android.model.PackStore;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -15,6 +16,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.core.app.NavUtils;
 
 import android.view.MenuItem;
+import android.widget.GridView;
 
 /**
  * An activity representing a single Item detail screen. This
@@ -55,18 +57,24 @@ public class ItemDetailActivity extends AppCompatActivity {
         //
         // http://developer.android.com/guide/components/fragments.html
         //
-        if (savedInstanceState == null) {
-            // Create the detail fragment and add it to the activity
-            // using a fragment transaction.
-            Bundle arguments = new Bundle();
-            arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
-            ItemDetailFragment fragment = new ItemDetailFragment();
-            fragment.setArguments(arguments);
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.item_detail_container, fragment)
-                    .commit();
-        }
+//        if (savedInstanceState == null) {
+//            // Create the detail fragment and add it to the activity
+//            // using a fragment transaction.
+//            Bundle arguments = new Bundle();
+//            arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
+//                    getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
+//            ItemDetailFragment fragment = new ItemDetailFragment();
+//            fragment.setArguments(arguments);
+//            getSupportFragmentManager().beginTransaction()
+//                    .add(R.id.item_detail_container, fragment)
+//                    .commit();
+//        }
+
+        GridView stickersGrid = findViewById(R.id.stickers_grid);
+        stickersGrid.setAdapter(
+                new StickersGridAdapter(getBaseContext(),
+                        PackStore.getPackById(getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID)))
+        );
     }
 
     @Override

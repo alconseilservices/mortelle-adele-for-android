@@ -12,10 +12,20 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bayardpresse.morteleadele.android.data.PacksStore;
+import com.bayardpresse.morteleadele.android.model.Pack;
+import com.bayardpresse.morteleadele.android.model.PackStore;
+import com.google.gson.Gson;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -52,13 +62,13 @@ public class ItemListActivity extends AppCompatActivity {
             }
         });*/
 
-        if (findViewById(R.id.item_detail_container) != null) {
+        //if (findViewById(R.id.item_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
             // activity should be in two-pane mode.
-            mTwoPane = true;
-        }
+        //   mTwoPane = true;
+        //}
 
         View recyclerView = findViewById(R.id.item_list);
         assert recyclerView != null;
@@ -66,19 +76,19 @@ public class ItemListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, PacksStore.ITEMS, mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, PackStore.fetchPacks(), mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final ItemListActivity mParentActivity;
-        private final List<PacksStore.Pack> mValues;
+        private final List<Pack> mValues;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PacksStore.Pack item = (PacksStore.Pack) view.getTag();
+                Pack item = (Pack) view.getTag();
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
                     arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.id);
@@ -98,7 +108,7 @@ public class ItemListActivity extends AppCompatActivity {
         };
 
         SimpleItemRecyclerViewAdapter(ItemListActivity parent,
-                                      List<PacksStore.Pack> items,
+                                      List<Pack> items,
                                       boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
@@ -114,8 +124,13 @@ public class ItemListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).name);
+
+            int resID = mParentActivity.getResources().getIdentifier(mValues.get(position).iconName.toLowerCase(),
+                    "drawable", mParentActivity.getPackageName());
+
+            holder.mPackLogoView.setImageResource(resID);
+            holder.mPackNameView.setText(mValues.get(position).name);
+            holder.mPackSizeView.setText(mValues.get(position).size);
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
@@ -127,13 +142,15 @@ public class ItemListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView mIdView;
-            final TextView mContentView;
+            final ImageView mPackLogoView;
+            final TextView mPackNameView;
+            final TextView mPackSizeView;
 
             ViewHolder(View view) {
                 super(view);
-                mIdView = (TextView) view.findViewById(R.id.id_text);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mPackLogoView = (ImageView) view.findViewById(R.id.pack_logo);
+                mPackNameView = (TextView) view.findViewById(R.id.pack_name);
+                mPackSizeView = (TextView) view.findViewById(R.id.pack_size);
             }
         }
     }

@@ -3,6 +3,7 @@ package com.bayardpresse.morteleadele.android;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.bayardpresse.morteleadele.android.model.PackStore;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import androidx.fragment.app.Fragment;
@@ -10,9 +11,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 
-import com.bayardpresse.morteleadele.android.data.PacksStore;
+import com.bayardpresse.morteleadele.android.model.Pack;
 
 /**
  * A fragment representing a single Item detail screen.
@@ -30,7 +32,9 @@ public class ItemDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private PacksStore.Pack mItem;
+    private Pack mItem;
+    private GridView mGridView;
+    private StickersGridAdapter adapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -42,15 +46,10 @@ public class ItemDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
-            mItem = PacksStore.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
-
+            mItem = PackStore.getPackById(getArguments().getString(ARG_ITEM_ID));
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+            CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
                 appBarLayout.setTitle(mItem.name);
             }
@@ -61,12 +60,10 @@ public class ItemDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.item_detail, container, false);
-
-        // Show the dummy content as text in a TextView.
-        if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.item_detail)).setText(mItem.name);
-        }
-
+        mGridView = rootView.findViewById(R.id.stickers_grid);
+        adapter = new StickersGridAdapter(getContext(), mItem);
+        mGridView.setAdapter(adapter);
         return rootView;
     }
+
 }
