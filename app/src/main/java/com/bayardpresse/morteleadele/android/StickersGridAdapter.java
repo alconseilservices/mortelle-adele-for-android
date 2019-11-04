@@ -1,10 +1,7 @@
 package com.bayardpresse.morteleadele.android;
 
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +13,12 @@ import androidx.annotation.Nullable;
 
 import com.bayardpresse.morteleadele.android.model.Pack;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class StickersGridAdapter extends BaseAdapter {
 
@@ -66,29 +64,20 @@ public class StickersGridAdapter extends BaseAdapter {
                     try {
                         ImageView iv = (ImageView) v;
                         Context ctx = v.getContext();
-                        Bitmap stickerBmp = BitmapFactory.decodeResource(ctx.getResources(), (Integer) v.getTag());
-                        ContextWrapper wrapper = new ContextWrapper(ctx);
-                        File file = wrapper.getDir("images", Context.MODE_PRIVATE);
-                        file = new File(file, "image.webp");
-                        OutputStream stream = new FileOutputStream(file);
-                        stickerBmp.compress(Bitmap.CompressFormat.WEBP, 100, stream);
-                        stream.flush();
-                        stream.close();
-                        Uri fileUri = Uri.parse(file.getAbsolutePath());
-                        FileInputStream fis = new FileInputStream(fileUri.getPath());
-                        Bitmap bitmap = BitmapFactory.decodeStream(fis);
-                        fis.close();
-                        file = new File(ctx.getCacheDir() + "/thestickers.webp");
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file));
-                        Uri contentUri = FileProvider.getUriForFile(v.getContext(), BuildConfig.FILE_PROVIDER_AUTHORITY, file);
+                        InputStream ais = context.getAssets().open("1/objet_001_512px.webp");
+                        File targetFile = new File(context.getCacheDir(), "objet_001_512px.webp");
+                        FileUtils.copyInputStreamToFile(ais, targetFile);
+                        Uri uri = FileProvider.getUriForFile(context, BuildConfig.FILE_PROVIDER_AUTHORITY, targetFile);
                         Intent shareIntent = new Intent(Intent.ACTION_SEND);
                         shareIntent.setType("image/*");
-                        shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+                        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
                         shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        shareIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         Intent chooserIntent = Intent.createChooser(shareIntent, "Partager le sticker");
                         chooserIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        shareIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         ctx.startActivity(chooserIntent);
-                    } catch (java.io.IOException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
