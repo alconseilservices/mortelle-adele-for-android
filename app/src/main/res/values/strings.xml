@@ -6,4 +6,5 @@
     <string name="sticker_detail_menu_item_CGU">CGU</string>
     <string name="sticker_detail_menu_item_site_mortelle_adele">Le site Mortelle Adèle</string>
     <string name="whatspp_not_installed">Whatsapp non trouvé</string>
+    <string name="sticker_detailhint_touch_sticker">Toucher un sticker pour le partager</string>
 </resources>
