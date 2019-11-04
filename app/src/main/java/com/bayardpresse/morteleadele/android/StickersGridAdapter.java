@@ -84,7 +84,10 @@ public class StickersGridAdapter extends BaseAdapter {
                         Intent shareIntent = new Intent(Intent.ACTION_SEND);
                         shareIntent.setType("image/*");
                         shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-                        ctx.startActivity(Intent.createChooser(shareIntent, "Partager le sticker"));
+                        shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Intent chooserIntent = Intent.createChooser(shareIntent, "Partager le sticker");
+                        chooserIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        ctx.startActivity(chooserIntent);
                     } catch (java.io.IOException e) {
                         e.printStackTrace();
                     }

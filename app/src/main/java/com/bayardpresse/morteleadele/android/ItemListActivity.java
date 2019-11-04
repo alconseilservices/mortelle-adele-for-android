@@ -79,6 +79,7 @@ public class ItemListActivity extends AppCompatActivity {
             Intent intent = new Intent(context, WebViewActivity.class);
             intent.putExtra(WebViewActivity.ARG_URL, "http://applications-enfants.bayam.fr/page/cgu-stickers-mortelle-adele-application.html");
             intent.putExtra(WebViewActivity.ARG_TITLE, "CGU");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
             return true;
         } else if (id == R.id.menu_item_mortelleadele_action) {
@@ -86,6 +87,7 @@ public class ItemListActivity extends AppCompatActivity {
             Intent intent = new Intent(context, WebViewActivity.class);
             intent.putExtra(WebViewActivity.ARG_URL, "https://www.mortelleadele.com/");
             intent.putExtra(WebViewActivity.ARG_TITLE, "Le site Mortelle Adèle");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
             return true;
         }

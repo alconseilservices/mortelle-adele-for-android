@@ -68,6 +68,7 @@ public class ItemDetailActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_STICKER_PACK_ID, pack.id);
             intent.putExtra(EXTRA_STICKER_PACK_AUTHORITY, BuildConfig.CONTENT_PROVIDER_AUTHORITY);
             intent.putExtra(EXTRA_STICKER_PACK_NAME, pack.name);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setPackage(CONSUMER_WHATSAPP_PACKAGE_NAME);
             try {
                 startActivityForResult(intent, ADD_PACK);
