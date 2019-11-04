@@ -15,14 +15,6 @@
       "license_agreement_website": "",
       "stickers": [
         {
-          "image_file": "objet_001_512px.webp",
-          "emojis": ["😄","😀"]
-        },
-        {
-          "image_file": "objet_002_512px.webp",
-          "emojis": ["😄","😀"]
-        },
-        {
           "image_file": "objet_text_001_512px.webp",
           "emojis": ["😄","😀"]
         },
@@ -217,8 +209,30 @@
       ]
     },
     {
+      "identifier": "5",
+      "name": "Objets",
+      "publisher": "Bayard Presse",
+      "tray_image_file": "trayIcon.png",
+      "image_data_version":"1",
+      "avoid_cache":false,
+      "publisher_email":"",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "objet_001_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_002_512px.webp",
+          "emojis": ["😄","😀"]
+        }
+      ]
+    },
+    {
       "identifier": "3",
-      "name": "Stickers mortels - Couvertures",
+      "name": "Couvertures",
       "publisher": "Bayard Presse",
       "tray_image_file": "trayIcon.png",
       "image_data_version":"1",

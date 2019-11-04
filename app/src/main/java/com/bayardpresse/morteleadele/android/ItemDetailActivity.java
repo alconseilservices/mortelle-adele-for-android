@@ -4,8 +4,8 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.bayardpresse.morteleadele.android.model.Pack;
 import com.bayardpresse.morteleadele.android.model.PackStore;
+import com.bayardpresse.morteleadele.android.model.StickerPack;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -25,7 +25,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     public static final String EXTRA_STICKER_PACK_AUTHORITY = "sticker_pack_authority";
     public static final String EXTRA_STICKER_PACK_NAME = "sticker_pack_name";
 
-    private Pack pack;
+    private StickerPack pack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class ItemDetailActivity extends AppCompatActivity {
             }
             Intent intent = new Intent();
             intent.setAction("com.whatsapp.intent.action.ENABLE_STICKER_PACK");
-            intent.putExtra(EXTRA_STICKER_PACK_ID, pack.id);
+            intent.putExtra(EXTRA_STICKER_PACK_ID, pack.identifier);
             intent.putExtra(EXTRA_STICKER_PACK_AUTHORITY, BuildConfig.CONTENT_PROVIDER_AUTHORITY);
             intent.putExtra(EXTRA_STICKER_PACK_NAME, pack.name);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -5,25 +5,16 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.bayardpresse.morteleadele.android.model.PackStore;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.bayardpresse.morteleadele.android.model.StickerPack;
 
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Toolbar;
 
-import com.bayardpresse.morteleadele.android.model.Pack;
-
-/**
- * A fragment representing a single Item detail screen.
- * This fragment is either contained in a {@link ItemListActivity}
- * in two-pane mode (on tablets) or a {@link ItemDetailActivity}
- * on handsets.
- */
 public class ItemDetailFragment extends Fragment {
     /**
      * The fragment argument representing the item ID that this fragment
@@ -34,7 +25,7 @@ public class ItemDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private Pack mItem;
+    private StickerPack mItem;
     private GridView mGridView;
     private StickersGridAdapter adapter;
 

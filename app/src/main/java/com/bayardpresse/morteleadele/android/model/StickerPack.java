@@ -90,6 +90,13 @@ public class StickerPack implements Parcelable {
         }
     }
 
+    public void updateSize() {
+        totalSize = 0;
+        for (Sticker sticker : stickers) {
+            totalSize += sticker.size;
+        }
+    }
+
     public void setAndroidPlayStoreLink(String androidPlayStoreLink) {
         this.androidPlayStoreLink = androidPlayStoreLink;
     }

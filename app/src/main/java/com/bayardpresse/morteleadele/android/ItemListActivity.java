@@ -1,56 +1,30 @@
 package com.bayardpresse.morteleadele.android;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bayardpresse.morteleadele.android.model.Pack;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bayardpresse.morteleadele.android.model.PackStore;
-import com.google.gson.Gson;
+import com.bayardpresse.morteleadele.android.model.Sticker;
+import com.bayardpresse.morteleadele.android.model.StickerPack;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.List;
 
-/**
- * An activity representing a list of Items. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link ItemDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
- */
 public class ItemListActivity extends AppCompatActivity {
-
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
-    private boolean mTwoPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +40,6 @@ public class ItemListActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.stickers_list_menu, menu);
         return true;
     }
@@ -86,7 +59,7 @@ public class ItemListActivity extends AppCompatActivity {
             Context context = getApplicationContext();
             Intent intent = new Intent(context, WebViewActivity.class);
             intent.putExtra(WebViewActivity.ARG_URL, "https://www.mortelleadele.com/");
-            intent.putExtra(WebViewActivity.ARG_TITLE, "Le site Mortelle Adèle");
+            intent.putExtra(WebViewActivity.ARG_TITLE, "L'univers Mortelle Adèle");
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
             return true;
@@ -95,43 +68,29 @@ public class ItemListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, PackStore.fetchPacks(), mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, PackStore.fetchPacks(this.getApplicationContext())));
     }
 
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final ItemListActivity mParentActivity;
-        private final List<Pack> mValues;
-        private final boolean mTwoPane;
+        private final List<StickerPack> mValues;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pack item = (Pack) view.getTag();
-                /*if (mTwoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.id);
-                    ItemDetailFragment fragment = new ItemDetailFragment();
-                    fragment.setArguments(arguments);
-                    mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.item_detail_container, fragment)
-                            .commit();
-                } else {*/
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, ItemDetailActivity.class);
-                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, item.id);
-
-                    context.startActivity(intent);
-                //}
+                StickerPack item = (StickerPack) view.getTag();
+                Context context = view.getContext();
+                Intent intent = new Intent(context, ItemDetailActivity.class);
+                intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, item.identifier);
+                context.startActivity(intent);
             }
         };
 
         SimpleItemRecyclerViewAdapter(ItemListActivity parent,
-                                      List<Pack> items,
-                                      boolean twoPane) {
+                                      List<StickerPack> items) {
             mValues = items;
             mParentActivity = parent;
-            mTwoPane = twoPane;
         }
 
 
@@ -145,15 +104,21 @@ public class ItemListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
-            int resID = mParentActivity.getResources().getIdentifier(mValues.get(position).iconName.toLowerCase(),
-                    "drawable", mParentActivity.getPackageName());
+            Context ctx = mParentActivity.getApplicationContext();
+            StickerPack pack = mValues.get(position);
+            try {
+                Drawable drawable = Drawable.createFromStream(
+                        ctx.getAssets().open(pack.identifier + "/" + pack.getStickers().get(0).imageFileName),
+                        pack.getStickers().get(0).imageFileName);
+                holder.mPackLogoView.setImageDrawable(drawable);
+                holder.mPackNameView.setText(pack.name);
+                holder.mPackSizeView.setText("" + (mValues.get(position).getTotalSize()/1024) + " kB");
+                holder.itemView.setTag(mValues.get(position));
+                holder.itemView.setOnClickListener(mOnClickListener);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-            holder.mPackLogoView.setImageResource(resID);
-            holder.mPackNameView.setText(mValues.get(position).name);
-            holder.mPackSizeView.setText(mValues.get(position).size);
-
-            holder.itemView.setTag(mValues.get(position));
-            holder.itemView.setOnClickListener(mOnClickListener);
         }
 
         @Override

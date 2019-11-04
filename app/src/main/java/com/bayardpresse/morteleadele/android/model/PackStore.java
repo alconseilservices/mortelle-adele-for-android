@@ -1,58 +1,49 @@
 package com.bayardpresse.morteleadele.android.model;
 
-import com.google.gson.Gson;
+import android.content.Context;
+import android.content.res.AssetManager;
 
-import java.io.BufferedReader;
+import com.bayardpresse.morteleadele.android.ContentFileParser;
+
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PackStore {
 
-    private static List<Pack> PACKS = null;
-    private static Map<String, Pack> MAP_PACKS = null;
+    private static final String CONTENT_FILE_NAME = "contents.json";
 
-    public static Pack getPackById(String id) {
+    private static List<StickerPack> PACKS = null;
+    private static Map<String, StickerPack> MAP_PACKS = null;
+
+    public static StickerPack getPackById(String id) {
         if(MAP_PACKS != null) {
             return MAP_PACKS.get(id);
         }
         return null;
     }
 
-    public static List<Pack> fetchPacks() {
+    public static List<StickerPack> fetchPacks(Context context) {
         if(PACKS == null) {
             synchronized (PackStore.class) {
                 if (PACKS == null) {
                     try {
-                        InputStream is = PackStore.class.getClassLoader().getResourceAsStream("res/raw/packs_json.json");
-                        Writer writer = new StringWriter();
-                        char[] buffer = new char[1024];
-                        try {
-                            Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-                            int n;
-                            while ((n = reader.read(buffer)) != -1) {
-                                writer.write(buffer, 0, n);
-                            }
-                        } finally {
-                            is.close();
-                        }
-                        String packsString = writer.toString();
-                        Gson gson = new Gson();
-                        Pack[] packsArray =  gson.fromJson(packsString, Pack[].class);
+                        AssetManager assetManager = context.getAssets();
+                        InputStream contentsInputStream = context.getAssets().open(CONTENT_FILE_NAME);
+                        PACKS = ContentFileParser.parseStickerPacks(contentsInputStream);
                         MAP_PACKS = new HashMap<>();
-                        for (Pack item : packsArray) {
-                            MAP_PACKS.put(item.id, item);
+                        for (StickerPack pack : PACKS) {
+                            MAP_PACKS.put(pack.identifier, pack);
+                            for (Sticker sticker : pack.getStickers()) {
+                                sticker.size = assetManager.openFd(pack.identifier + "/"
+                                        + sticker.imageFileName).getLength();
+                            }
+                            pack.updateSize();
                         }
-                        return Arrays.asList(packsArray);
+
                     } catch (Exception e) {
                         e.printStackTrace();
-                        return null;
                     }
                 }
             }
