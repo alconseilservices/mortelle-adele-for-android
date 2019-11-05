@@ -1,9 +1,9 @@
-package com.bayardpresse.morteleadele.android.model;
+package com.bayardpresse.stickers.mortelleadele.model;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 
-import com.bayardpresse.morteleadele.android.ContentFileParser;
+import com.bayardpresse.stickers.mortelleadele.ContentFileParser;
 
 import java.io.InputStream;
 import java.util.HashMap;

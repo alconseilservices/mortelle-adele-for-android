@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bayardpresse.morteleadele.android">
+    package="com.bayardpresse.android">
 
     <application
         android:allowBackup="true"
@@ -10,17 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WebViewActivity"
-                  android:parentActivityName=".ItemListActivity"
+        <activity android:name="com.bayardpresse.stickers.mortelleadele.WebViewActivity"
+                  android:parentActivityName="com.bayardpresse.stickers.mortelleadele.ItemListActivity"
                   android:label="CGU"
                   android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bayardpresse.morteleadele.android.ItemListActivity" />
+                android:value="com.bayardpresse.android.com.bayardpresse.stickers.mortelleadele.ItemListActivity" />
         </activity>
         <activity
-            android:name=".ItemListActivity"
+            android:name="com.bayardpresse.stickers.mortelleadele.ItemListActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -30,23 +30,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ItemDetailActivity"
-            android:parentActivityName=".ItemListActivity"
+            android:name="com.bayardpresse.stickers.mortelleadele.ItemDetailActivity"
+            android:parentActivityName="com.bayardpresse.stickers.mortelleadele.ItemListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bayardpresse.morteleadele.android.ItemListActivity" />
+                android:value="com.bayardpresse.android.com.bayardpresse.stickers.mortelleadele.ItemListActivity" />
         </activity>
 
         <provider
-            android:name=".StickersPacksContentProvider"
+            android:name="com.bayardpresse.stickers.mortelleadele.StickersPacksContentProvider"
             android:authorities="${contentProviderAuthority}"
             android:enabled="true"
             android:exported="true"
             android:readPermission="com.whatsapp.sticker.READ" />
         <provider
-            android:name=".FileProvider"
+            android:name="com.bayardpresse.stickers.mortelleadele.FileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">

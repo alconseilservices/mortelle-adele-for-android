@@ -1,27 +1,23 @@
-package com.bayardpresse.morteleadele.android;
+package com.bayardpresse.stickers.mortelleadele;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.net.Uri;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.bayardpresse.morteleadele.android.model.Sticker;
-import com.bayardpresse.morteleadele.android.model.StickerPack;
+import com.bayardpresse.android.BuildConfig;
+import com.bayardpresse.stickers.mortelleadele.model.Sticker;
+import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
 
 import org.apache.commons.io.FileUtils;
 
@@ -87,7 +83,7 @@ public class StickersGridAdapter extends BaseAdapter {
                             FileUtils.copyInputStreamToFile(ais, targetFile);
                             Uri uri = FileProvider.getUriForFile(context, BuildConfig.FILE_PROVIDER_AUTHORITY, targetFile);
                             Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                            shareIntent.setType("image/*");
+                            shareIntent.setType("image/png");
                             shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
                             shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             shareIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

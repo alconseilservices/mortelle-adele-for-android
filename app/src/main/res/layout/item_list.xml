@@ -17,13 +17,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/item_list"
-        android:name="com.bayardpresse.morteleadele.android.ItemListFragment"
+        android:name="com.bayardpresse.android.ItemListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".ItemListActivity"
+        tools:context="com.bayardpresse.stickers.mortelleadele.ItemListActivity"
         tools:listitem="@layout/item_list_content" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

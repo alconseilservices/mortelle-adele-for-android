@@ -1,11 +1,12 @@
-package com.bayardpresse.morteleadele.android;
+package com.bayardpresse.stickers.mortelleadele;
 
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.bayardpresse.morteleadele.android.model.PackStore;
-import com.bayardpresse.morteleadele.android.model.StickerPack;
+import com.bayardpresse.android.R;
+import com.bayardpresse.stickers.mortelleadele.model.PackStore;
+import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
 
 import androidx.fragment.app.Fragment;
 

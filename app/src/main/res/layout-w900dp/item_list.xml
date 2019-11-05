@@ -10,7 +10,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context=".ItemListActivity">
+    tools:context="com.bayardpresse.stickers.mortelleadele.ItemListActivity">
 
     <!--
     This layout is a two-pane layout for the Items
@@ -27,13 +27,13 @@
     <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/item_list"
-        android:name="com.bayardpresse.morteleadele.android.ItemListFragment"
+        android:name="com.bayardpresse.android.ItemListFragment"
         android:layout_width="@dimen/item_width"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.bayardpresse.morteleadele.android.ItemListActivity"
+        tools:context="com.bayardpresse.android.com.bayardpresse.stickers.mortelleadele.ItemListActivity"
         tools:listitem="@layout/item_list_content" />
 
 </LinearLayout>

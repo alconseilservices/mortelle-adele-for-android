@@ -1,4 +1,4 @@
-package com.bayardpresse.morteleadele.android;
+package com.bayardpresse.stickers.mortelleadele;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import com.bayardpresse.android.R;
 
 public class WebViewActivity extends AppCompatActivity {
 

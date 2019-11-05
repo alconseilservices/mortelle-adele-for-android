@@ -1,4 +1,4 @@
-package com.bayardpresse.morteleadele.android;
+package com.bayardpresse.stickers.mortelleadele;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,9 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bayardpresse.morteleadele.android.model.PackStore;
-import com.bayardpresse.morteleadele.android.model.Sticker;
-import com.bayardpresse.morteleadele.android.model.StickerPack;
+import com.bayardpresse.android.R;
+import com.bayardpresse.stickers.mortelleadele.model.PackStore;
+import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
 
 import java.io.IOException;
 import java.util.List;

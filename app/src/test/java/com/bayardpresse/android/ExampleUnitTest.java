@@ -1,4 +1,4 @@
-package com.bayardpresse.morteleadele.android;
+package com.bayardpresse.android;
 
 import org.junit.Test;
 

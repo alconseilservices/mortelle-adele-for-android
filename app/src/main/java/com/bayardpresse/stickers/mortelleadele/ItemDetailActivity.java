@@ -1,11 +1,13 @@
-package com.bayardpresse.morteleadele.android;
+package com.bayardpresse.stickers.mortelleadele;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.bayardpresse.morteleadele.android.model.PackStore;
-import com.bayardpresse.morteleadele.android.model.StickerPack;
+import com.bayardpresse.android.BuildConfig;
+import com.bayardpresse.android.R;
+import com.bayardpresse.stickers.mortelleadele.model.PackStore;
+import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
 
 import androidx.appcompat.widget.Toolbar;
 

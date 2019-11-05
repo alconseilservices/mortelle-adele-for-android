@@ -5,7 +5,7 @@
  * This source code is licensed under the BSD-style license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package com.bayardpresse.morteleadele.android;
+package com.bayardpresse.stickers.mortelleadele;
 
 import android.content.ContentProvider;
 import android.content.ContentResolver;
@@ -23,15 +23,15 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.bayardpresse.morteleadele.android.model.Sticker;
-import com.bayardpresse.morteleadele.android.model.StickerPack;
+import com.bayardpresse.android.BuildConfig;
+import com.bayardpresse.stickers.mortelleadele.model.Sticker;
+import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class StickersPacksContentProvider extends ContentProvider {
 

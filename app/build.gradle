@@ -7,7 +7,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.bayardpresse.morteleadele.android"
+        applicationId "com.bayardpresse.stickers.mortelleadele"
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
