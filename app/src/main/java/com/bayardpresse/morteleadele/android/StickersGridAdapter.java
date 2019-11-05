@@ -1,5 +1,6 @@
 package com.bayardpresse.morteleadele.android;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -54,6 +55,7 @@ public class StickersGridAdapter extends BaseAdapter {
         return 0;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -79,12 +81,9 @@ public class StickersGridAdapter extends BaseAdapter {
                             animation1.setFillAfter(true);
                             iv.startAnimation(animation1);
 
-                            /*Animation shake = AnimationUtils.loadAnimation(context, R.anim.shakeanimation);
-                            iv.setAnimation(shake);*/
-
                             Sticker _sticker = (Sticker) iv.getTag();
-                            InputStream ais = context.getAssets().open(pack.identifier + "/" + _sticker.imageFileName);
-                            File targetFile = new File(context.getCacheDir(), _sticker.imageFileName);
+                            InputStream ais = context.getAssets().open(pack.identifier + "/" + _sticker.imageFileName.replace("webp", "png"));
+                            File targetFile = new File(context.getCacheDir(), _sticker.imageFileName.replace("webp", "png"));
                             FileUtils.copyInputStreamToFile(ais, targetFile);
                             Uri uri = FileProvider.getUriForFile(context, BuildConfig.FILE_PROVIDER_AUTHORITY, targetFile);
                             Intent shareIntent = new Intent(Intent.ACTION_SEND);
