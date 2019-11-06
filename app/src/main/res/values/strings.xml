@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Les stickers Mortelle Adèle</string>
+    <string name="app_name">Stickers Mortelle Adèle</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="sticker_detail_menu_item_share">Menu</string>
     <string name="sticker_detail_menu_item_addwas">Ajouter à WhatsApp</string>
     <string name="sticker_detail_menu_item_CGU">CGU</string>
-    <string name="sticker_detail_menu_item_site_mortelle_adele">L\'univers Mortelle Adèle</string>
+    <string name="sticker_detail_menu_item_site_mortelle_adele">L\' univers Mortelle Adèle</string>
     <string name="whatspp_not_installed">WhatsApp non trouvé</string>
     <string name="sticker_detailhint_touch_sticker">Toucher un sticker pour le partager</string>
 </resources>

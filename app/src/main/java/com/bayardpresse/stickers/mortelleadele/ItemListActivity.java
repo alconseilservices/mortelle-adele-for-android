@@ -59,7 +59,7 @@ public class ItemListActivity extends AppCompatActivity {
             Context context = getApplicationContext();
             Intent intent = new Intent(context, WebViewActivity.class);
             intent.putExtra(WebViewActivity.ARG_URL, "https://www.mortelleadele.com/");
-            intent.putExtra(WebViewActivity.ARG_TITLE, "L'univers Mortelle Adèle");
+            intent.putExtra(WebViewActivity.ARG_TITLE, getResources().getString(R.string.sticker_detail_menu_item_site_mortelle_adele));
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
             return true;
