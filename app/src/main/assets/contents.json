@@ -139,6 +139,10 @@
         {
           "image_file": "ad020_512px.webp",
           "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad021_512px.webp",
+          "emojis": ["😄","😀"]
         }
       ]
     },
@@ -175,6 +179,14 @@
           "emojis": ["😄","😀"]
         },
         {
+          "image_file": "Jade_003_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Jade_004_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
           "image_file": "Magnus_001_512px.webp",
           "emojis": ["😄","😀"]
         },
@@ -205,6 +217,22 @@
         {
           "image_file": "Magnus_008_512px.webp",
           "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Copain_001_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Copain_002_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Ludo_001_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "Ludo_002_512px.webp",
+          "emojis": ["😄","😀"]
         }
       ]
     },
@@ -226,6 +254,30 @@
         },
         {
           "image_file": "objet_002_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_003_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_004_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_005_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_006_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_009_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_010_512px.webp",
           "emojis": ["😄","😀"]
         }
       ]

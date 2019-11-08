@@ -38,3 +38,13 @@ for filename in ./4/*.webp; do
     echo  '"emojis": ["😄","😀"]'
     echo '},'
 done
+
+echo "###########################################"
+
+for filename in ./5/*.webp; do
+    echo '{'
+    #echo  '"image_file": "${filename/./}",'
+	echo '"image_file": "'"${filename/.\/5\//}"'",'
+    echo  '"emojis": ["😄","😀"]'
+    echo '},'
+done
