@@ -4,7 +4,7 @@
   "sticker_packs": [
     {
       "identifier": "1",
-      "name": "Punchlines",
+      "name": "Expressions mortelles !",
       "publisher": "Bayard Presse",
       "tray_image_file": "trayIcon.png",
       "image_data_version":"1",
@@ -50,7 +50,7 @@
     },
     {
       "identifier": "2",
-      "name": "Personnages 1",
+      "name": "Adèle pose pour toi",
       "publisher": "Bayard Presse",
       "tray_image_file": "trayIcon.png",
       "image_data_version":"1",
@@ -143,12 +143,16 @@
         {
           "image_file": "ad021_512px.webp",
           "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "ad022_512px.webp",
+          "emojis": ["😄","😀"]
         }
       ]
     },
     {
       "identifier": "4",
-      "name": "Personnages 2",
+      "name": "Les autres personnages",
       "publisher": "Bayard Presse",
       "tray_image_file": "trayIcon.png",
       "image_data_version":"1",
@@ -238,7 +242,7 @@
     },
     {
       "identifier": "5",
-      "name": "Objets",
+      "name": "Objets mortels",
       "publisher": "Bayard Presse",
       "tray_image_file": "trayIcon.png",
       "image_data_version":"1",
@@ -273,18 +277,34 @@
           "emojis": ["😄","😀"]
         },
         {
+          "image_file": "objet_007_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_008_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
           "image_file": "objet_009_512px.webp",
           "emojis": ["😄","😀"]
         },
         {
           "image_file": "objet_010_512px.webp",
           "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_011_512px.webp",
+          "emojis": ["😄","😀"]
+        },
+        {
+          "image_file": "objet_012_512px.webp",
+          "emojis": ["😄","😀"]
         }
       ]
     },
     {
       "identifier": "3",
-      "name": "Couvertures",
+      "name": "Couvertures des livres",
       "publisher": "Bayard Presse",
       "tray_image_file": "trayIcon.png",
       "image_data_version":"1",
