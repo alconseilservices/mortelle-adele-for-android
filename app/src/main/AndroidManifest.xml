@@ -5,16 +5,26 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.bayardpresse.stickers.mortelleadele.WebViewActivity"
-                  android:parentActivityName="com.bayardpresse.stickers.mortelleadele.ItemListActivity"
-                  android:label="CGU"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name="com.bayardpresse.stickers.mortelleadele.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bayardpresse.stickers.mortelleadele.WebViewActivity"
+            android:label="CGU"
+            android:parentActivityName="com.bayardpresse.stickers.mortelleadele.ItemListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bayardpresse.android.com.bayardpresse.stickers.mortelleadele.ItemListActivity" />
@@ -24,10 +34,9 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bayardpresse.android.com.bayardpresse.stickers.mortelleadele.MainActivity" />
         </activity>
         <activity
             android:name="com.bayardpresse.stickers.mortelleadele.ItemDetailActivity"
@@ -38,7 +47,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bayardpresse.android.com.bayardpresse.stickers.mortelleadele.ItemListActivity" />
         </activity>
-
+        <activity
+            android:name="com.google.android.gms.tagmanager.PreviewActivity"
+            android:label="@string/app_name"
+            android:noHistory="true"> <!-- optional, removes the previewActivity from the activity stack. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tagmanager.c.com.bayardpresse.stickers.mortelleadele" />
+            </intent-filter>
+        </activity>
         <provider
             android:name="com.bayardpresse.stickers.mortelleadele.StickersPacksContentProvider"
             android:authorities="${contentProviderAuthority}"
@@ -55,8 +74,8 @@
                 android:resource="@xml/sharing_paths" />
         </provider>
     </application>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

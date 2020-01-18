@@ -20,15 +20,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bayardpresse.android.R;
 import com.bayardpresse.stickers.mortelleadele.model.PackStore;
 import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.IOException;
 import java.util.List;
 
 public class ItemListActivity extends AppCompatActivity {
 
+    private static FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+        mFirebaseAnalytics.setCurrentScreen(this, "PacksList", null);
         setContentView(R.layout.activity_item_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -36,6 +41,7 @@ public class ItemListActivity extends AppCompatActivity {
         View recyclerView = findViewById(R.id.item_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+
     }
 
     @Override
@@ -53,6 +59,10 @@ public class ItemListActivity extends AppCompatActivity {
             intent.putExtra(WebViewActivity.ARG_URL, "http://applications-enfants.bayam.fr/page/cgu-stickers-mortelle-adele-application.html");
             intent.putExtra(WebViewActivity.ARG_TITLE, "CGU");
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Bundle bundle = new Bundle();
+            bundle.putString("title", "CGU");
+            bundle.putString("action", "clic : onglet");
+            mFirebaseAnalytics.logEvent("navigation", bundle);
             context.startActivity(intent);
             return true;
         } else if (id == R.id.menu_item_mortelleadele_action) {
@@ -61,6 +71,10 @@ public class ItemListActivity extends AppCompatActivity {
             intent.putExtra(WebViewActivity.ARG_URL, "https://www.mortelleadele.com/");
             intent.putExtra(WebViewActivity.ARG_TITLE, getResources().getString(R.string.sticker_detail_menu_item_site_mortelle_adele));
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Bundle bundle = new Bundle();
+            bundle.putString("title", "Site Web");
+            bundle.putString("action", "clic : onglet");
+            mFirebaseAnalytics.logEvent("navigation", bundle);
             context.startActivity(intent);
             return true;
         }
@@ -83,6 +97,11 @@ public class ItemListActivity extends AppCompatActivity {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, ItemDetailActivity.class);
                 intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, item.identifier);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("title", "pack : #" + item.name + "#");
+                bundle.putString("action", "clic : acces pack");
+                mFirebaseAnalytics.logEvent("navigation", bundle);
                 context.startActivity(intent);
             }
         };

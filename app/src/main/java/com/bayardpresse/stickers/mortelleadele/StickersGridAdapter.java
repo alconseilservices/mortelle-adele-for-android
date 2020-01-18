@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import androidx.annotation.Nullable;
 import com.bayardpresse.android.BuildConfig;
 import com.bayardpresse.stickers.mortelleadele.model.Sticker;
 import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.apache.commons.io.FileUtils;
 
@@ -27,6 +29,7 @@ import java.io.InputStream;
 
 public class StickersGridAdapter extends BaseAdapter {
 
+    private static FirebaseAnalytics mFirebaseAnalytics;
     private Context context;
     private StickerPack pack;
 
@@ -34,6 +37,7 @@ public class StickersGridAdapter extends BaseAdapter {
         super();
         this.context = context;
         this.pack = pack;
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
     }
 
     @Override
@@ -54,7 +58,7 @@ public class StickersGridAdapter extends BaseAdapter {
     @SuppressLint("ClickableViewAccessibility")
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position, @Nullable View convertView, @NonNull final ViewGroup parent) {
         ImageView imageView = null;
         try {
             Sticker sticker = pack.getStickers().get(position);
@@ -90,6 +94,12 @@ public class StickersGridAdapter extends BaseAdapter {
                             Intent chooserIntent = Intent.createChooser(shareIntent, "Partager le sticker");
                             chooserIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             shareIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                            Bundle bundle = new Bundle();
+                            bundle.putString("title", "pack : #" + pack.name + "# - #" + _sticker.imageFileName + "#");
+                            bundle.putString("action", "clic : partage sticker");
+                            mFirebaseAnalytics.logEvent("partage", bundle);
+
                             ctx.startActivity(chooserIntent);
                         } catch (Exception e) {
                             e.printStackTrace();

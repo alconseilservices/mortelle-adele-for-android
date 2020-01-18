@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "724745401854",
+    "firebase_url": "https://mortelle-adele-stickers.firebaseio.com",
+    "project_id": "mortelle-adele-stickers",
+    "storage_bucket": "mortelle-adele-stickers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724745401854:android:6840288750cce2d154bcaf",
+        "android_client_info": {
+          "package_name": "com.bayardpresse.stickers.mortelleadele"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724745401854-alt4k64u3116uc4kr2udpt0e35kdd86a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI0DLvN891zhGzLX7_5a1M0OkBOq7ZRS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724745401854-alt4k64u3116uc4kr2udpt0e35kdd86a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "724745401854-gft9pf4eacad3mp55c84int4ud9jlvqp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.groupebayard.mortelleadele.wasstickers.ugs",
+                "app_store_id": "1484025479"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

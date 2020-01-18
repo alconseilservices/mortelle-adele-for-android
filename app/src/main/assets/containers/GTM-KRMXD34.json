@@ -1,0 +1,51 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2019-10-24 14:37:47",
+    "containerVersion": {
+        "path": "accounts/176764010/containers/13208454/versions/1",
+        "accountId": "176764010",
+        "containerId": "13208454",
+        "containerVersionId": "1",
+        "name": "VIDE",
+        "container": {
+            "path": "accounts/176764010/containers/13208454",
+            "accountId": "176764010",
+            "containerId": "13208454",
+            "name": "Mortelle Adèle - Android - Firebase",
+            "publicId": "GTM-KRMXD34",
+            "usageContext": [
+                "ANDROID_SDK_5"
+            ],
+            "fingerprint": "1571216698439",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/176764010/containers/13208454/workspaces?apiLink=container"
+        },
+        "builtInVariable": [
+            {
+                "accountId": "176764010",
+                "containerId": "13208454",
+                "type": "EVENT_NAME",
+                "name": "Event Name"
+            },
+            {
+                "accountId": "176764010",
+                "containerId": "13208454",
+                "type": "APP_ID",
+                "name": "App ID"
+            },
+            {
+                "accountId": "176764010",
+                "containerId": "13208454",
+                "type": "APP_NAME",
+                "name": "App Name"
+            },
+            {
+                "accountId": "176764010",
+                "containerId": "13208454",
+                "type": "APP_VERSION_CODE",
+                "name": "App Version Code"
+            }
+        ],
+        "fingerprint": "1571216872357",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/176764010/containers/13208454/versions/1?apiLink=version"
+    }
+}

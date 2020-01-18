@@ -9,8 +9,11 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.bayardpresse.android.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class WebViewActivity extends AppCompatActivity {
+
+    private static FirebaseAnalytics mFirebaseAnalytics;
 
     public static final String ARG_URL = "url";
     public static final String ARG_TITLE = "title";
@@ -19,6 +22,9 @@ public class WebViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+        mFirebaseAnalytics.setCurrentScreen(this, "CGU", null);
 
         setTitle(getIntent().getStringExtra(ARG_TITLE));
 

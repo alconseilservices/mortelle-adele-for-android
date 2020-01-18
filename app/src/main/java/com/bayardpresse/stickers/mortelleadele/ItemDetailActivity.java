@@ -8,6 +8,7 @@ import com.bayardpresse.android.BuildConfig;
 import com.bayardpresse.android.R;
 import com.bayardpresse.stickers.mortelleadele.model.PackStore;
 import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -21,6 +22,8 @@ import android.widget.Toast;
 
 public class ItemDetailActivity extends AppCompatActivity {
 
+    private static FirebaseAnalytics mFirebaseAnalytics;
+
     private static final int ADD_PACK = 200;
     static final String CONSUMER_WHATSAPP_PACKAGE_NAME = "com.whatsapp";
     public static final String EXTRA_STICKER_PACK_ID = "sticker_pack_id";
@@ -32,6 +35,10 @@ public class ItemDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+        mFirebaseAnalytics.setCurrentScreen(this, "PackDetail", null);
+
         pack = PackStore.getPackById(getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
         setContentView(R.layout.activity_item_detail);
 
@@ -77,6 +84,10 @@ public class ItemDetailActivity extends AppCompatActivity {
             } catch (ActivityNotFoundException e) {
                 Toast.makeText(this, "Oups !!!", Toast.LENGTH_LONG).show();
             }
+            Bundle bundle = new Bundle();
+            bundle.putString("title", "pack : #" + pack.name + "#");
+            bundle.putString("action", "download complete");
+            mFirebaseAnalytics.logEvent("download_WA", bundle);
             return true;
         }
         return super.onOptionsItemSelected(item);
