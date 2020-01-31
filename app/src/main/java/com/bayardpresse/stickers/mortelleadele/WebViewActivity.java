@@ -4,10 +4,12 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.batch.android.Batch;
 import com.bayardpresse.android.R;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
@@ -17,6 +19,12 @@ public class WebViewActivity extends AppCompatActivity {
 
     public static final String ARG_URL = "url";
     public static final String ARG_TITLE = "title";
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Batch.onNewIntent(this, intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

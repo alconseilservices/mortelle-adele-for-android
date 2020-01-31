@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.batch.android.Batch;
 import com.bayardpresse.android.R;
 import com.bayardpresse.stickers.mortelleadele.model.PackStore;
 import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
@@ -42,6 +43,12 @@ public class ItemListActivity extends AppCompatActivity {
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Batch.onNewIntent(this, intent);
     }
 
     @Override

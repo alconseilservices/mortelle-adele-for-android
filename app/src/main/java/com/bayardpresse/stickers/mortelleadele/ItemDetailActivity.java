@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.batch.android.Batch;
 import com.bayardpresse.android.BuildConfig;
 import com.bayardpresse.android.R;
 import com.bayardpresse.stickers.mortelleadele.model.PackStore;
@@ -54,6 +55,12 @@ public class ItemDetailActivity extends AppCompatActivity {
         }
         GridView stickersGrid = findViewById(R.id.stickers_grid);
         stickersGrid.setAdapter(new StickersGridAdapter(getBaseContext(), pack));
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Batch.onNewIntent(this, intent);
     }
 
     @Override

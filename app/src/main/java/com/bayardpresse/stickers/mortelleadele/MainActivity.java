@@ -14,9 +14,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Batch.setConfig(new Config("DEV5DC15302BF169FA02064B6CBF57"));
-        getApplication().registerActivityLifecycleCallbacks(new BatchActivityLifecycleHelper());
         startPacksListActivity();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Batch.onNewIntent(this, intent);
     }
 
     private void startPacksListActivity() {
