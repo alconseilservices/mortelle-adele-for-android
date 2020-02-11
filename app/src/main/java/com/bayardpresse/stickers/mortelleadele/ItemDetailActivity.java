@@ -4,7 +4,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.batch.android.Batch;
 import com.bayardpresse.android.BuildConfig;
 import com.bayardpresse.android.R;
 import com.bayardpresse.stickers.mortelleadele.model.PackStore;
@@ -60,7 +59,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Batch.onNewIntent(this, intent);
+        // Batch.onNewIntent(this, intent);
     }
 
     @Override
@@ -92,7 +91,7 @@ public class ItemDetailActivity extends AppCompatActivity {
                 Toast.makeText(this, "Oups !!!", Toast.LENGTH_LONG).show();
             }
             Bundle bundle = new Bundle();
-            bundle.putString("title", "pack : #" + pack.name + "#");
+            bundle.putString("title", "pack : " + pack.name);
             bundle.putString("action", "download complete");
             mFirebaseAnalytics.logEvent("download_WA", bundle);
             return true;

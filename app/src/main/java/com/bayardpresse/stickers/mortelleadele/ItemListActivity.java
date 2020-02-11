@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.batch.android.Batch;
 import com.bayardpresse.android.R;
 import com.bayardpresse.stickers.mortelleadele.model.PackStore;
 import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
@@ -48,7 +47,7 @@ public class ItemListActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Batch.onNewIntent(this, intent);
+        // Batch.onNewIntent(this, intent);
     }
 
     @Override
@@ -106,7 +105,7 @@ public class ItemListActivity extends AppCompatActivity {
                 intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, item.identifier);
 
                 Bundle bundle = new Bundle();
-                bundle.putString("title", "pack : #" + item.name + "#");
+                bundle.putString("title", "pack : " + item.name);
                 bundle.putString("action", "clic : acces pack");
                 mFirebaseAnalytics.logEvent("navigation", bundle);
                 context.startActivity(intent);

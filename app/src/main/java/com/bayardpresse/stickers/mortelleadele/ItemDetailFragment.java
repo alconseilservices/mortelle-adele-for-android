@@ -3,18 +3,17 @@ package com.bayardpresse.stickers.mortelleadele;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
-
-import com.bayardpresse.android.R;
-import com.bayardpresse.stickers.mortelleadele.model.PackStore;
-import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.Toolbar;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+
+import com.bayardpresse.android.R;
+import com.bayardpresse.stickers.mortelleadele.model.PackStore;
+import com.bayardpresse.stickers.mortelleadele.model.StickerPack;
 
 public class ItemDetailFragment extends Fragment {
     /**
